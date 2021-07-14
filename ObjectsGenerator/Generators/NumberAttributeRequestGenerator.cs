@@ -29,7 +29,7 @@ namespace ObjectsGenerator.Generators
             var minimumValue = options.MinimumValue.GetValueOrDefault();
             var maximumValue = options.MaximumValue.HasValue ? options.MaximumValue.Value : 1;
 
-            var number = faker.Random.Decimal(minimumValue, maximumValue);
+            var number = Faker.Random.Decimal(minimumValue, maximumValue);
 
             return options.DecimalPlaces.HasValue
                 ? Math.Round(number, options.DecimalPlaces.Value)

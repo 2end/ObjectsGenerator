@@ -3,8 +3,10 @@ using ObjectsGenerator.Factories;
 using ObjectsGenerator.Models.Requests;
 using ObjectsGenerator.Models.Settings;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace ObjectsGenerator.Generators
 {
@@ -19,9 +21,8 @@ namespace ObjectsGenerator.Generators
 
         public IEnumerable<ObjectRequest> Generate()
         {
-
-            var objectRequests = new List<ObjectRequest>(settings.Quantity);
-            for (int i = 0; i < settings.Quantity; i++)
+            var objectRequests = new ConcurrentStack<ObjectRequest>();
+            Parallel.For(0, settings.Quantity, i =>
             {
                 var objectRequest = new ObjectRequest
                 {
@@ -35,10 +36,8 @@ namespace ObjectsGenerator.Generators
 
                 objectRequest.AttributeRequests.AddRange(attributeRequests);
 
-                objectRequests.Add(objectRequest);
-
-                Console.Write($"\rNumber of generated objects: {i + 1}");
-            }
+                objectRequests.Push(objectRequest);
+            });
 
             Console.WriteLine();
 

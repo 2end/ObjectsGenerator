@@ -39,9 +39,9 @@ namespace ObjectsGenerator.Generators
         {
             var minAmountToPick = 0;
             var maxAmountToPick = options.Multiple ? options.Values.Count() : 1;
-            var amountToPick = faker.Random.Number(minAmountToPick, maxAmountToPick);
+            var amountToPick = Faker.Random.Number(minAmountToPick, maxAmountToPick);
 
-            var pickedPersonOrGroupValueOptions = faker.PickRandom(options.Values, amountToPick);
+            var pickedPersonOrGroupValueOptions = Faker.PickRandom(options.Values, amountToPick);
             return pickedPersonOrGroupValueOptions;
         }
 
