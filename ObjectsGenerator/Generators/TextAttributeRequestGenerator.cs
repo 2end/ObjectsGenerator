@@ -36,16 +36,16 @@ namespace ObjectsGenerator.Generators
         {
             var plainText = options.TextType switch
             {
-                TextType.Name => faker.Name.JobArea(),                
-                _ => faker.Lorem.Sentences()
+                TextType.Name => Faker.Name.JobArea(),                
+                _ => Faker.Lorem.Sentences()
             };
 
-            return faker.Random.ClampString(plainText, options.MinimumLength, options.MaximumLength);
+            return Faker.Random.ClampString(plainText, options.MinimumLength, options.MaximumLength);
         }
 
         private string GetRichText(string text)
         {
-            var htmlTag = faker.PickRandom(htmlTags);
+            var htmlTag = Faker.PickRandom(htmlTags);
             return $"<{htmlTag}>" + text + $"</{htmlTag}>";
         }
     }

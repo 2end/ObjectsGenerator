@@ -29,7 +29,7 @@ namespace ObjectsGenerator.Generators
             var minimumValue = options.MinimumValue.GetValueOrDefault();
             var maximumValue = options.MaximumValue.HasValue ? options.MaximumValue.Value : DateTime.MaxValue;
 
-            var date = faker.Date.Between(minimumValue, maximumValue);
+            var date = Faker.Date.Between(minimumValue, maximumValue);
             return date;
         }
     }

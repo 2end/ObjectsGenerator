@@ -27,7 +27,7 @@ namespace ObjectsGenerator.Generators
             var minimumValue = options.MinimumValue.GetValueOrDefault();
             var maximumValue = options.MaximumValue.HasValue ? options.MaximumValue.Value : decimal.MaxValue;
 
-            var amount = faker.Random.Decimal(minimumValue, maximumValue);
+            var amount = Faker.Random.Decimal(minimumValue, maximumValue);
             return amount;
         }
     }

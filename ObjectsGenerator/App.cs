@@ -17,7 +17,9 @@ namespace ObjectsGenerator
         {
             var stopwatch = new Stopwatch();
             stopwatch.Start();
+
             var objectRequests = objectRequestGenerator.Generate();
+
             stopwatch.Stop();
             TimeSpan elapsed = stopwatch.Elapsed;
             Console.WriteLine($"{elapsed.Minutes}:{elapsed.Seconds}");

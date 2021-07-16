@@ -23,6 +23,6 @@ namespace ObjectsGenerator.Generators
             return request;
         }
 
-        private bool GetBool() => faker.Random.Bool();
+        private bool GetBool() => Faker.Random.Bool();
     }
 }

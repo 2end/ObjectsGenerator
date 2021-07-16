@@ -6,14 +6,9 @@ namespace ObjectsGenerator.Generators
 {
     public abstract class AttributeRequestGenerator : IAttributeRequestGenerator
     {
-        protected readonly Faker faker;
+        protected static Faker Faker { get; set; } = new Faker();
 
-        public AttributeRequestGenerator()
-        {
-            this.faker = new Faker();
-        }
-        
 
-        public abstract AttributeRequest Generate();        
+        public abstract AttributeRequest Generate();
     }
 }

@@ -27,7 +27,7 @@ namespace ObjectsGenerator.Generators
         private IEnumerable<HyperlinkValue> GetHyperlinkValues()
         {
             int amount = options.Multiple
-                ? faker.Random.Number(2, 5)
+                ? Faker.Random.Number(2, 5)
                 : 1;
 
             var hyperlinkValues = new List<HyperlinkValue>(amount);
@@ -42,8 +42,8 @@ namespace ObjectsGenerator.Generators
 
         private HyperlinkValue GetHyperlinkValue()
         {
-            var domain = faker.Internet.DomainName();
-            var protocol = faker.Internet.Protocol();
+            var domain = Faker.Internet.DomainName();
+            var protocol = Faker.Internet.Protocol();
 
             var displayValue = options.RequireDisplayValue ? domain : null;
             var url = $"{protocol}://{domain}";
