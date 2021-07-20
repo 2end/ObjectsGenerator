@@ -34,9 +34,9 @@ namespace ObjectsGenerator.Generators
             return choiceValues;
         }
 
-        private IEnumerable<ChoiceValueOptions> PickChoiceValueOptions(IEnumerable<ChoiceValueOptions> choiceValueOptions)
+        private IEnumerable<ChoiceValueOptions> PickChoiceValueOptions(IEnumerable<ChoiceValueOptions> choiceValueOptions, bool canBeEmpty = true)
         {
-            var minAmountToPick = 0;
+            var minAmountToPick = canBeEmpty ? 0 : 1;
             var maxAmountToPick = options.Multiple ? choiceValueOptions.Count() : 1;
             var amountToPick = Faker.Random.Number(minAmountToPick, maxAmountToPick);
 
@@ -47,7 +47,7 @@ namespace ObjectsGenerator.Generators
         private ChoiceValue ToChoiceValue(ChoiceValueOptions choiceValueOptions)
         {
             var children = choiceValueOptions.Children.Any()
-                ? PickChoiceValueOptions(choiceValueOptions.Children).Select(ToChoiceValue).ToList()
+                ? PickChoiceValueOptions(choiceValueOptions.Children, false).Select(ToChoiceValue).ToList()
                 : Enumerable.Empty<ChoiceValue>();
 
             var choiceValue = new ChoiceValue
